@@ -78,7 +78,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ ready = true }) => {
               <PaperFold
                 text={value.title}
                 type="chars"
-                className="text-xl font-sans font-black md:text-2xl lg:text-3xl leading-none"
+                className="text-xl font-sans font-black md:text-2xl lg:text-4xl leading-none"
                 style={{ color: value.color }}
                 containerClassName="w-full h-auto flex p-0 overflow-hidden bg-transparent"
               />
