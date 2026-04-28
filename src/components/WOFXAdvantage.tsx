@@ -164,7 +164,7 @@ export const WOFXAdvantage: React.FC = () => {
             <CylinderText 
               text="WOFX Advantage" 
               primaryColor="#FFCC29"
-              className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter border-t border-b border-white/10"
+              className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center border-t border-b border-white/10"
             />
             <p className="mt-4 text-sm md:text-lg text-center font-black text-[#FFCC29]  leading-tight border-t border-b border-white/10">
               Unlock a World of Opportunities in Furniture & Design

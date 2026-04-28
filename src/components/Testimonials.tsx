@@ -21,63 +21,54 @@ export default function Testimonials() {
   return (
     <section className="relative w-full bg-[#f0f0f0]    overflow-hidden h-[850px] flex flex-col justify-center">
       {/* Background Grain Effect */}
-      <div 
+      <div
         className="pointer-events-none absolute inset-0 z-0 opacity-[0.4] mix-blend-overlay"
-        style={{ 
+        style={{
           backgroundImage: `url('https://cdn.prod.website-files.com/6630e0a2908a500ca06793bb/689c7c08a1f59a833ae519e1_Grain.gif')`,
           backgroundSize: '200px',
-        }} 
+        }}
       />
 
       <div className="relative z-10 w-full px-0">
-        <div className="mb-14 text-center">
-          <CylinderText 
-            text="Testimonials" 
-            primaryColor="#e41c62"
-            className="text-4xl md:text-6xl font-black uppercase tracking-tighter"
-          />
-        </div>
-
         {/* The Grid - Scaled up to overflow the container (half boxes visible) */}
         <div className="relative left-1/2 -translate-x-1/2 w-[115%] md:w-[125%] lg:w-[130%]">
-          <div className="grid grid-cols-[15%_1fr_15%] gap-6 auto-rows-fr">
+          <div className="grid grid-cols-[25%_1fr_25%] gap-6 auto-rows-fr">
             {/* Row 1 */}
-            <div className="border border-[#DFDFDF] rounded-[1.2rem] min-h-[140px]" />
-            <div className="border border-[#DFDFDF] rounded-[1.2rem] min-h-[140px]" />
-            <div className="border border-[#DFDFDF] rounded-[1.2rem] min-h-[140px]" />
+            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
+            <div className="rounded-[1.2rem] min-h-[140px] bg-white flex items-end justify-center pb-8 md:pb-12 relative z-50">
+              <CylinderText
+                text="TESTIMONIALS"
+                primaryColor="#e41c62"
+                trigger="viewport"
+                className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center"
+              />
+            </div>
+            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
 
             {/* Row 2 */}
-            <div className="border border-[#DFDFDF] rounded-[1.2rem]" />
-            
+            <div className="rounded-[1.2rem] bg-white" />
+
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
               className="relative group overflow-hidden rounded-[1.2rem] p-10 md:p-14 transition-all duration-700 flex flex-col justify-between w-full min-h-[460px]"
-              style={{ 
+              style={{
                 backgroundColor: cardColor,
               }}
             >
-              {/* Grainy Texture Overlay */}
-              <div 
-                className="absolute inset-0 pointer-events-none mix-blend-overlay z-0" 
-                style={{ 
-                  backgroundImage: 'url("https://cdn.prod.website-files.com/6630e0a2908a500ca06793bb/689c7c08a1f59a833ae519e1_Grain.gif")',
-                  backgroundSize: '200px 200px'
-                }} 
-              />
 
               {/* Custom Cutout Corner (Top-Left) */}
               <div className="absolute pointer-events-none w-[170px] h-[170px] top-0 left-0">
                 {/* The "Notch" - matched to background #f0f0f0 */}
-                <div className="absolute w-full h-full bg-[#f0f0f0] top-0 left-0 rounded-br-[1.2rem]" />
-                
+                <div className="absolute w-full h-full bg-[#FFCC29] top-0 left-0 rounded-br-[1.2rem]" />
+
                 {/* Concave Curves (The "Inverted" corners) */}
-                <div className="absolute w-12 h-12 bg-[#f0f0f0] -bottom-12 left-0">
+                <div className="absolute w-12 h-12 bg-[#FFCC29] -bottom-12 left-0">
                   <div className="w-full h-full rounded-tl-[1.2rem]" style={{ backgroundColor: cardColor }} />
                 </div>
-                <div className="absolute w-12 h-12 bg-[#f0f0f0] top-0 -right-12">
+                <div className="absolute w-12 h-12 bg-[#FFCC29] top-0 -right-12">
                   <div className="w-full h-full rounded-tl-[1.2rem]" style={{ backgroundColor: cardColor }} />
                 </div>
               </div>
@@ -86,7 +77,7 @@ export default function Testimonials() {
               <div className="absolute pointer-events-none w-[180px] h-[80px] bottom-0 right-0">
                 {/* The "Notch" - Now primary color */}
                 <div className="absolute w-full h-full bg-[#e41c62] bottom-0 right-0 rounded-tl-[1.2rem]" />
-                
+
                 {/* Concave Curves (The "Inverted" corners) */}
                 <div className="absolute w-12 h-12 bg-[#e41c62] -top-12 right-0">
                   <div className="w-full h-full rounded-br-[1.2rem]" style={{ backgroundColor: cardColor }} />
@@ -97,7 +88,7 @@ export default function Testimonials() {
               </div>
 
               {/* Label in the Bottom-Right Notch */}
-              <div 
+              <div
                 className="absolute bottom-0 right-0 z-20 flex items-center justify-center"
                 style={{ width: '180px', height: '80px' }}
               >
@@ -107,26 +98,28 @@ export default function Testimonials() {
               </div>
 
               {/* Top Row: Identity (Image + Name/Details) */}
-              <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8">
-                {/* IMAGE container positioned to sit nicely in the Notch */}
-                <div 
-                   className="shrink-0 p-2 bg-[#d1d5db] rounded-[1.2rem] shadow-sm z-20"
-                   style={{ 
-                     marginTop: '-40px', 
-                     marginLeft: '-40px'
-                   }}
+              <div className="relative z-10 w-full">
+                {/* IMAGE container positioned absolutely to sit beautifully centered in the Notch */}
+                <div
+                  className="testimonial-img-container absolute z-20 p-2 rounded-[1.2rem] shadow-sm"
+                  style={{
+                    backgroundColor: '#ffffff',
+                    top: '-13px',
+                    left: '-13px'
+                  }}
                 >
-                  <style dangerouslySetInnerHTML={{ __html: `
+                  <style dangerouslySetInnerHTML={{
+                    __html: `
                     @media (min-width: 768px) {
-                      .group .shrink-0 {
-                        margin-top: -56px !important;
-                        margin-left: -56px !important;
+                      .testimonial-img-container {
+                        top: -34px !important;
+                        left: -34px !important;
                       }
                     }
                   `}} />
                   <div className="w-[100px] h-[100px] md:w-[110px] md:h-[110px] overflow-hidden rounded-[0.8rem] bg-white">
-                    <img 
-                      src={t.img} 
+                    <img
+                      src={t.img}
                       alt={t.name}
                       className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                       referrerPolicy="no-referrer"
@@ -134,14 +127,15 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-                <div className="pt-2">
-                  <h3 
+                {/* Text container positioned to clear the notch and align perfectly */}
+                <div className="pt-[140px] md:pt-0 md:-mt-[34px] md:ml-[130px] md:min-h-[126px] flex flex-col justify-center">
+                  <h3
                     style={{ color: textColor }}
                     className="text-2xl md:text-3xl font-bold tracking-tight mb-1"
                   >
                     {t.name}
                   </h3>
-                  <p 
+                  <p
                     style={{ color: textMuted }}
                     className="text-base md:text-lg font-normal tracking-normal"
                   >
@@ -152,21 +146,21 @@ export default function Testimonials() {
 
               {/* Bottom Row: Testimonial Paragraph */}
               <div className="relative z-10 mt-10 md:mt-0 mb-10 md:mb-4 px-2">
-                <p 
+                <p
                   style={{ color: textColor }}
-                  className="text-lg md:text-2xl lg:text-3xl leading-[1.3] font-bold tracking-tight italic"
+                  className="text-lg md:text-xl lg:text-xl leading-[1.1] font-semibold tracking-tight italic"
                 >
                   "{t.text}"
                 </p>
               </div>
             </motion.div>
 
-            <div className="border border-[#DFDFDF] rounded-[1.2rem]" />
+            <div className="rounded-[1.2rem] bg-white" />
 
             {/* Row 3 */}
-            <div className="border border-[#DFDFDF] rounded-[1.2rem] min-h-[140px]" />
-            <div className="border border-[#DFDFDF] rounded-[1.2rem] min-h-[140px]" />
-            <div className="border border-[#DFDFDF] rounded-[1.2rem] min-h-[140px]" />
+            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
+            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
+            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
           </div>
         </div>
       </div>

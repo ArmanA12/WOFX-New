@@ -99,7 +99,7 @@ export default function IndustryBodies() {
           <CylinderText 
             text="INDUSTRY BODIES ENDORSING WOFX" 
             trigger="viewport"
-            className="text-2xl md:text-3xl font-black text-center tracking-tighter"
+            className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center"
             primaryColor="#e41c62"
           />
         </div>

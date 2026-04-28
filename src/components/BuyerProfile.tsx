@@ -118,13 +118,13 @@ export default function BuyerProfile() {
             <CylinderText 
               text="Buyer" 
               trigger="viewport"
-              className="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter uppercase"
+              className="text-3xl md:text-5xl font-bold tracking-tight uppercase"
               primaryColor="#e41c62"
             />
             <CylinderText 
               text="Profiles" 
               trigger="viewport"
-              className="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter uppercase mt-[-0.2em]"
+              className="text-3xl md:text-5xl font-bold tracking-tight uppercase mt-[-0.2em]"
               primaryColor="#e41c62"
               delay={0.1}
             />

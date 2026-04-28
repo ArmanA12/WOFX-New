@@ -58,7 +58,7 @@ export const LatestUpdates = () => {
         <CylinderText 
           text="Latest Updates and Publication" 
           trigger="viewport"
-          className="text-3xl md:text-4xl lg:text-5xl font-sans font-black leading-none tracking-tighter text-center uppercase"
+          className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center"
           primaryColor="#000000"
         />
         <p className="mt-6 text-sm md:text-base font-semibold text-[#888] capitalize max-w-2xl text-center">

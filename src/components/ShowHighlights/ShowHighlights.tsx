@@ -25,9 +25,9 @@ const ShowHighlights = () => {
       {/* 1. Header Section */}
       <div className="w-[95%] mx-auto px-6 pt-8 md:px-12 bg-[#f0f0f0] flex justify-center">
         <CylinderText 
-          text="2025 Highlights" 
+          text="2025 HIGHLIGHTS" 
           trigger="viewport"
-          className="text-[12vw] font-display font-black leading-none tracking-tighter md:text-[8vw] text-center"
+          className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center"
           primaryColor="#e41c62"
         />
       </div>
