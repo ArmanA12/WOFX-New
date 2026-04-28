@@ -398,7 +398,7 @@ export default function App() {
                 <X className="h-8 w-8" strokeWidth={2.5} />
               </button>
             </div>
-            <div className="flex flex-1 flex-col justify-center gap-4 text-4xl font-black uppercase md:text-7xl">
+            <div className="flex flex-1 flex-col justify-center gap-4 text-4xl font-bold uppercase md:text-7xl">
               {['Program', 'Exhibitors', 'Venue', 'About', 'Contact'].map((item, idx) => (
                 <div key={item} className="flex">
                   <CylinderText 
@@ -406,7 +406,7 @@ export default function App() {
                     trigger="load" 
                     ready={mobileMenuOpen}
                     delay={0.6 + idx * 0.1}
-                    className="font-black tracking-tighter"
+                    className="font-bold tracking-tighter"
                   />
                 </div>
               ))}

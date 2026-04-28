@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CylinderText } from './CylinderText';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+// import { CylinderText } from './CylinderText';
 
 const TESTIMONIALS = [
   {
@@ -19,7 +20,7 @@ export default function Testimonials() {
   const textMuted = "#666666";
 
   return (
-    <section className="relative w-full bg-[#f0f0f0]    overflow-hidden h-[850px] flex flex-col justify-center">
+    <section className="relative w-full bg-[#f0f0f0] overflow-hidden h-[830px] flex flex-col justify-center border-t-[1.5px] border-[#DFDFDF]">
       {/* Background Grain Effect */}
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-[0.4] mix-blend-overlay"
@@ -32,21 +33,45 @@ export default function Testimonials() {
       <div className="relative z-10 w-full px-0">
         {/* The Grid - Scaled up to overflow the container (half boxes visible) */}
         <div className="relative left-1/2 -translate-x-1/2 w-[115%] md:w-[125%] lg:w-[130%]">
-          <div className="grid grid-cols-[25%_1fr_25%] gap-6 auto-rows-fr">
+          <div className="grid grid-cols-[25%_1fr_25%] gap-[10px]">
             {/* Row 1 */}
-            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
-            <div className="rounded-[1.2rem] min-h-[140px] bg-white flex items-end justify-center pb-8 md:pb-12 relative z-50">
-              <CylinderText
-                text="TESTIMONIALS"
-                primaryColor="#e41c62"
-                trigger="viewport"
-                className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center"
-              />
+            <div className="rounded-[1.2rem] min-h-[250px] bg-white" />
+            <div className="rounded-[1.2rem] min-h-[250px] bg-white flex flex-col items-center justify-center relative z-50 overflow-visible">
+              {/* Testimonials Badge Style */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="select-none"
+              >
+                <div className="border-[1.5px] border-[#e41c62]/30 p-[3px] -skew-x-12 -rotate-2">
+                  <div className="bg-[#e41c62] px-8 py-3 border-[1.5px] border-white/20">
+                    <span className="text-white text-3xl md:text-5xl font-black italic tracking-tighter uppercase block skew-x-12">
+                      Testimonials
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
+            <div className="rounded-[1.2rem] min-h-[250px] bg-white" />
 
             {/* Row 2 */}
-            <div className="rounded-[1.2rem] bg-white" />
+            <div className="rounded-[1.2rem] bg-white relative group cursor-pointer">
+              {/* Previous Button Notch - Vertical with Concave Curves */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[60px] h-[160px] bg-[#e41c62] rounded-l-[1.2rem] flex flex-col items-center justify-center gap-4 transition-transform duration-300 group-hover:scale-105 z-20">
+                <ChevronLeft className="text-white w-6 h-6" />
+                <span className="text-white text-lg font-black uppercase tracking-widest [writing-mode:vertical-lr] rotate-180">PREV</span>
+                
+                {/* Concave Curves */}
+                <div className="absolute w-12 h-12 bg-[#e41c62] -top-12 right-0">
+                  <div className="w-full h-full rounded-br-[1.2rem] bg-white" />
+                </div>
+                <div className="absolute w-12 h-12 bg-[#e41c62] -bottom-12 right-0">
+                  <div className="w-full h-full rounded-tr-[1.2rem] bg-white" />
+                </div>
+              </div>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -58,7 +83,6 @@ export default function Testimonials() {
                 backgroundColor: cardColor,
               }}
             >
-
               {/* Custom Cutout Corner (Top-Left) */}
               <div className="absolute pointer-events-none w-[170px] h-[170px] top-0 left-0">
                 {/* The "Notch" - matched to background #f0f0f0 */}
@@ -155,12 +179,26 @@ export default function Testimonials() {
               </div>
             </motion.div>
 
-            <div className="rounded-[1.2rem] bg-white" />
+            <div className="rounded-[1.2rem] bg-white relative group cursor-pointer">
+              {/* Next Button Notch - Vertical with Concave Curves */}
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[60px] h-[160px] bg-[#e41c62] rounded-r-[1.2rem] flex flex-col items-center justify-center gap-4 transition-transform duration-300 group-hover:scale-105 z-20">
+                <ChevronRight className="text-white w-6 h-6" />
+                <span className="text-white text-lg font-black uppercase tracking-widest [writing-mode:vertical-lr] rotate-180">NEXT</span>
+
+                {/* Concave Curves */}
+                <div className="absolute w-12 h-12 bg-[#e41c62] -top-12 left-0">
+                  <div className="w-full h-full rounded-bl-[1.2rem] bg-white" />
+                </div>
+                <div className="absolute w-12 h-12 bg-[#e41c62] -bottom-12 left-0">
+                  <div className="w-full h-full rounded-tl-[1.2rem] bg-white" />
+                </div>
+              </div>
+            </div>
 
             {/* Row 3 */}
-            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
-            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
-            <div className="rounded-[1.2rem] min-h-[140px] bg-white" />
+            <div className="rounded-[1.2rem] min-h-[250px] bg-white" />
+            <div className="rounded-[1.2rem] min-h-[250px] bg-white" />
+            <div className="rounded-[1.2rem] min-h-[250px] bg-white" />
           </div>
         </div>
       </div>

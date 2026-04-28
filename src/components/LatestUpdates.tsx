@@ -56,7 +56,7 @@ export const LatestUpdates = () => {
         </motion.div>
 
         <CylinderText 
-          text="Latest Updates and Publication" 
+          text="Latest Updates & Publication" 
           trigger="viewport"
           className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center"
           primaryColor="#000000"
@@ -72,14 +72,14 @@ export const LatestUpdates = () => {
           <div key={idx} className="flex flex-col border-b-[1.5px] md:border-b-0 md:border-r-[1.5px] border-[#DFDFDF] last:border-r-0">
             {/* Column Label */}
             <div className="px-6 py-6 border-b-[1.5px] border-[#DFDFDF] flex justify-center items-center">
-              <span className="text-xl md:text-2xl font-black tracking-tight">{card.category}</span>
+              <span className="text-xl md:text-2xl font-semibold tracking-tight">{card.category}</span>
             </div>
 
             {/* Image Content */}
             <div className="relative group overflow-hidden h-[500px] bg-[#f0f0f0] p-1">
               <motion.div
-                initial={{ clipPath: 'inset(100% 0 0 0)' }}
-                whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
+                initial={{ clipPath: 'inset(0 100% 0 0)' }}
+                whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
                 viewport={{ once: true }}
                 transition={{ duration: 2.4, ease: [0.19, 1, 0.22, 1], delay: 0.2 + idx * 0.1 }}
                 className="w-full h-full"

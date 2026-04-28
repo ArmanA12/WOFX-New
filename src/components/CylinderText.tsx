@@ -102,7 +102,7 @@ export const CylinderText: React.FC<CylinderTextProps> = ({
         ref={primaryRef} 
         className={`relative flex whitespace-nowrap ${className.includes('text-center') ? 'justify-center' : ''} ${className.includes('text-right') ? 'justify-end' : ''}`}
       >
-        <h2 className="leading-none flex py-1" style={{ color: primaryColor }}>
+        <h2 className="leading-none flex py-1" style={{ color: primaryColor, WebkitTextStroke: `0.5px ${primaryColor}` }}>
           <TextSplitter text={text} />
         </h2>
       </div>

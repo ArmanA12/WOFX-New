@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/10">
             {/* Column 1: Organised By */}
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10">
-              <h3 className="text-[19px] font-bold mb-6 tracking-wider uppercase text-[#e41c62]">ORGANISED BY</h3>
+              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">ORGANISED BY</h3>
                  <div className="">
                   <img 
                     src="https://www.wofxworldexpo.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FWORLDEX.ee3fab01.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4" 
@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
 
             {/* Column 2: Quick Links */}
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10">
-              <h3 className="text-[19px] font-bold mb-6 tracking-wider uppercase text-[#e41c62]">QUICK LINKS</h3>
+              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">QUICK LINKS</h3>
               <ul className="space-y-3 text-[14px]">
                 {['Exhibitor Enquiry Form', 'Buyer Registration Form', 'Exhibitor Profile', 'Buyer Profile', 'Terms and Conditions'].map((link) => (
                   <li key={link}>
@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
 
             {/* Column 3: About WOFX */}
             <div className="p-8 md:p-12">
-              <h3 className="text-[19px] font-bold mb-6 tracking-wider uppercase text-[#e41c62]">ABOUT WOFX</h3>
+              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">ABOUT WOFX</h3>
               <p className="text-[14px] leading-relaxed">
                 WOFX is a professional B2B trade show dedicated exclusively to the furniture + design industry in India. It is a show where all categories of furniture and décor come together on one industry platform.
               </p>

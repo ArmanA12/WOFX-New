@@ -69,7 +69,7 @@ const SupportingOrganisations: React.FC = () => {
           <CylinderText 
             text="SUPPORTING ORGANISATIONS" 
             trigger="viewport"
-            className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center"
+            className="text-xl md:text-[1.75rem] font-bold tracking-tight uppercase text-center"
             primaryColor="#e41c62"
           />
         </div>

@@ -86,7 +86,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ ready = true }) => {
                 <PaperFold
                   text={value.desc}
                   type="words"
-                  className="text-xs font-semibold tracking-wide text-[#888] leading-none"
+                  className="text-lg font-semibold tracking-wide text-[#888] leading-none"
                   containerClassName="w-full h-auto flex p-0 overflow-hidden bg-transparent"
                 />
               </div>
@@ -99,8 +99,8 @@ const AboutUs: React.FC<AboutUsProps> = ({ ready = true }) => {
           {/* Background Image Container */}
           <div className="absolute inset-0 group cursor-pointer p-2">
             <motion.div
-              initial={{ clipPath: 'inset(0 0 100% 0)' }}
-              whileInView={{ clipPath: 'inset(0 0 0% 0)' }}
+              initial={{ clipPath: 'inset(0 100% 0 0)' }}
+              whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
               viewport={{ once: true }}
               transition={{ duration: 1.8, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
               className="w-full h-full"
