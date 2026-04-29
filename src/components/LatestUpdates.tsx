@@ -68,7 +68,7 @@ export const LatestUpdates = () => {
     <section className="relative w-full bg-[#f0f0f0] font-sans text-black overflow-hidden border-t-[1.5px] border-[#DFDFDF]">
       {/* Grain Overlay */}
       <div 
-        className="pointer-events-none absolute inset-0 z-[10] opacity-[0.4] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.4] mix-blend-overlay"
         style={{ 
           backgroundImage: `url('https://cdn.prod.website-files.com/6630e0a2908a500ca06793bb/689c7c08a1f59a833ae519e1_Grain.gif')`,
           backgroundSize: '200px'
@@ -114,14 +114,14 @@ export const LatestUpdates = () => {
       {/* 3-Column Grid */}
       <div className="w-[95%] mx-auto grid grid-cols-1 md:grid-cols-[28%_44%_28%] border-x-[1.5px] border-y-[1.5px] border-[#DFDFDF]">
         {UPDATE_CARDS.map((card, idx) => (
-          <div key={idx} className="flex flex-col border-b-[1.5px] md:border-b-0 md:border-r-[1.5px] border-[#DFDFDF] last:border-r-0">
+          <div key={idx} className="flex flex-col bg-white border-b-[1.5px] md:border-b-0 md:border-r-[1.5px] border-[#DFDFDF] last:border-r-0">
             {/* Column Label */}
             <div className="px-6 py-6 border-b-[1.5px] border-[#DFDFDF] flex justify-center items-center">
               <span className="text-xl md:text-2xl font-semibold tracking-tight">{card.category}</span>
             </div>
 
             {/* Image Content */}
-            <div className="relative group overflow-hidden h-[500px] bg-[#f0f0f0] p-1">
+            <div className="relative group overflow-hidden h-[500px] bg-white p-1">
               <motion.div
                 initial={{ clipPath: 'inset(0 100% 0 0)' }}
                 whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
@@ -146,13 +146,7 @@ export const LatestUpdates = () => {
                   viewport={{ once: true }}
                   className="bg-black/30 backdrop-blur-xl p-4 rounded-2xl relative overflow-hidden border border-white/10"
                 >
-                  {/* Localized Grainy Texture */}
-                  <div 
-                    className="pointer-events-none absolute inset-0 z-0 opacity-[0.2]"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter-update-${idx}'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter-update-${idx})'/%3E%3C/svg%3E")`
-                    }}
-                  />
+
                   <p className="relative z-10 text-white text-base md:text-lg font-normal leading-tight tracking-tight capitalize">
                     {card.text}
                   </p>

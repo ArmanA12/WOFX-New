@@ -49,7 +49,7 @@ export const WOFXAdvantage: React.FC = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=4000", // Long scroll for cinematic feel
+          end: "+=1600", // Further reduced scroll distance
           pin: true,
           scrub: 1.5,
           refreshPriority: 1,

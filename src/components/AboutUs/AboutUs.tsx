@@ -86,7 +86,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ ready = true }) => {
                 <PaperFold
                   text={value.desc}
                   type="words"
-                  className="text-lg font-semibold tracking-wide text-[#888] leading-none"
+                  className="text-xs font-semibold tracking-wide text-[#888] leading-none"
                   containerClassName="w-full h-auto flex p-0 overflow-hidden bg-transparent"
                 />
               </div>
