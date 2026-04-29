@@ -82,18 +82,7 @@ const ShowHighlights = () => {
                     }}
                   />
                   
-                  {/* Header Pill */}
-                  <div className="flex">
-                    <motion.div 
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: (index * 0.12) + 0.4, type: "spring", stiffness: 200 }}
-                      whileHover={{ scale: 1.1 }}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-full ${badgeBg} backdrop-blur-sm cursor-pointer whitespace-nowrap`}
-                    >
-                      <Icon className={`w-4 h-4 ${isDark ? 'text-white' : 'text-black'}`} />
-                    </motion.div>
-                  </div>
+
 
                   {/* Main Text */}
                   <div className="flex-grow flex flex-col items-start justify-center text-left space-y-1 -mt-8">
@@ -147,7 +136,7 @@ const ShowHighlights = () => {
                         backgroundSize: '200px'
                       }}
                     />
-                    <ArrowUpRight className={`relative z-10 w-8 h-8 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${textColor}`} />
+                    <Icon className={`relative z-10 w-10 h-10 transition-transform group-hover:scale-110 ${textColor}`} />
                   </motion.button>
                 </motion.div>
               </motion.div>
