@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { CylinderText } from './CylinderText';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const UPDATE_CARDS = [
   {
@@ -22,6 +26,44 @@ const UPDATE_CARDS = [
 ];
 
 export const LatestUpdates = () => {
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const words = textRef.current.querySelectorAll('.word');
+      gsap.fromTo(words, 
+        { 
+          opacity: 0, 
+          x: 80, 
+          fontWeight: 900,
+          scale: 1.1,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          fontWeight: 400,
+          scale: 1,
+          duration: 1.8,
+          stagger: 0.03,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          }
+        }
+      );
+    }
+  }, []);
+
+  const splitWords = (text: string) => {
+    return text.split(' ').map((word, i) => (
+      <span key={i} className="word inline-block mr-[0.25em] will-change-transform transform-gpu">
+        {word}
+      </span>
+    ));
+  };
+
   return (
     <section className="relative w-full bg-[#f0f0f0] font-sans text-black overflow-hidden border-t-[1.5px] border-[#DFDFDF]">
       {/* Grain Overlay */}
@@ -61,8 +103,11 @@ export const LatestUpdates = () => {
           className="text-3xl md:text-5xl font-bold tracking-tight uppercase text-center"
           primaryColor="#000000"
         />
-        <p className="mt-6 text-sm md:text-base font-semibold text-[#888] capitalize max-w-2xl text-center">
-          Stay Informed with the most recent developments, market insights, and exclusive industry publications.
+        <p 
+          ref={textRef}
+          className="mt-6 text-sm font-normal leading-relaxed md:text-base lg:text-lg text-[#333] max-w-2xl text-center"
+        >
+          {splitWords("Stay Informed with the most recent developments, market insights, and exclusive industry publications.")}
         </p>
       </div>
 

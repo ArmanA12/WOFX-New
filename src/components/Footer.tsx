@@ -1,7 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Mail, Phone, ArrowUp, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
 import { motion, useSpring, useMotionValue } from 'motion/react';
 import RevealWrapper from './RevealWrapper';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Magnetic: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -64,8 +68,46 @@ const Footer: React.FC = () => {
     { name: 'YouTube' }
   ];
 
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (footerRef.current) {
+      const words = footerRef.current.querySelectorAll('.word');
+      gsap.fromTo(words, 
+        { 
+          opacity: 0, 
+          x: 60, 
+          fontWeight: 900,
+          scale: 1.1,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          fontWeight: 400,
+          scale: 1,
+          duration: 1.2,
+          stagger: 0.02,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          }
+        }
+      );
+    }
+  }, []);
+
+  const splitWords = (text: string) => {
+    return text.split(' ').map((word, i) => (
+      <span key={i} className="word inline-block mr-[0.25em] will-change-transform transform-gpu">
+        {word}
+      </span>
+    ));
+  };
+
   return (
-    <footer className="w-full bg-[#1a1a18] text-[#fbfbfb99]  relative overflow-hidden">
+    <footer ref={footerRef} className="w-full bg-[#1a1a18] text-[#fbfbfb99]  relative overflow-hidden">
       <RevealWrapper type="slide" direction="up" >
         {/* Background Grain Overlay */}
         <div 
@@ -81,7 +123,7 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/10">
             {/* Column 1: Organised By */}
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10">
-              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">ORGANISED BY</h3>
+              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">{splitWords("ORGANISED BY")}</h3>
                  <div className="">
                   <img 
                     src="https://www.wofxworldexpo.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FWORLDEX.ee3fab01.png&w=256&q=75&dpl=dpl_9TTGzHYezibYPkiRPAGLB3PUm1i4" 
@@ -92,14 +134,11 @@ const Footer: React.FC = () => {
                 </div>
               <div className="space-y-4 text-[14px] leading-relaxed">
                 <p>
-                  309, Parvati Premises, Sun Mill<br />
-                  Complex,<br />
-                  Lower Parel (W), Mumbai - 400 013,<br />
-                  India
+                  {splitWords("309, Parvati Premises, Sun Mill Complex, Lower Parel (W), Mumbai - 400 013, India")}
                 </p>
                 <div className="flex items-center gap-2">
                   <Phone size={14} />
-                  <span>(+91) 022-4037-6700</span>
+                  <span>{splitWords("(+91) 022-4037-6700")}</span>
                 </div>
                 <div>
                   <motion.a 
@@ -108,7 +147,7 @@ const Footer: React.FC = () => {
                     whileHover={{ rotate: -2, skewX: -10, scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    contactus@worldexindia.com
+                    {splitWords("contactus@worldexindia.com")}
                   </motion.a>
                 </div>
              
@@ -117,7 +156,7 @@ const Footer: React.FC = () => {
 
             {/* Column 2: Quick Links */}
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10">
-              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">QUICK LINKS</h3>
+              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">{splitWords("QUICK LINKS")}</h3>
               <ul className="space-y-3 text-[14px]">
                 {['Exhibitor Enquiry Form', 'Buyer Registration Form', 'Exhibitor Profile', 'Buyer Profile', 'Terms and Conditions'].map((link) => (
                   <li key={link}>
@@ -127,7 +166,7 @@ const Footer: React.FC = () => {
                       whileHover={{ rotate: -1, skewX: -5, x: 5 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      {link}
+                      {splitWords(link)}
                     </motion.a>
                   </li>
                 ))}
@@ -136,9 +175,9 @@ const Footer: React.FC = () => {
 
             {/* Column 3: About WOFX */}
             <div className="p-8 md:p-12">
-              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">ABOUT WOFX</h3>
+              <h3 className="text-[22px] font-black mb-6 tracking-wider uppercase text-[#e41c62]">{splitWords("ABOUT WOFX")}</h3>
               <p className="text-[14px] leading-relaxed">
-                WOFX is a professional B2B trade show dedicated exclusively to the furniture + design industry in India. It is a show where all categories of furniture and décor come together on one industry platform.
+                {splitWords("WOFX is a professional B2B trade show dedicated exclusively to the furniture + design industry in India. It is a show where all categories of furniture and décor come together on one industry platform.")}
               </p>
             </div>
           </div>
@@ -195,12 +234,12 @@ const Footer: React.FC = () => {
                 whileHover={{ rotate: -3, skewX: -15, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                Contact US
+                {splitWords("Contact US")}
               </motion.a>
             </div>
             <div className="py-6 md:py-8 border-b md:border-b-0 md:border-r border-white/10 flex items-center justify-center">
               <p className="text-[15px] font-medium tracking-wide">
-                © WOFX 2026 | All Rights Reserved.
+                {splitWords("© WOFX 2026 | All Rights Reserved.")}
               </p>
             </div>
             <div className="py-6 md:py-8 flex items-center justify-center">
@@ -210,7 +249,7 @@ const Footer: React.FC = () => {
                 whileHover={{ rotate: 3, skewX: 10, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                Back to Top
+                {splitWords("Back to Top")}
                 <ArrowUp size={16} />
               </motion.button>
             </div>

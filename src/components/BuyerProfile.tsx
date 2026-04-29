@@ -45,6 +45,15 @@ const BUYER_IMAGES = [
 export default function BuyerProfile() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLDivElement[]>([]);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  const splitWords = (text: string) => {
+    return text.split(' ').map((word, i) => (
+      <span key={i} className="word inline-block mr-[0.25em] will-change-transform transform-gpu">
+        {word}
+      </span>
+    ));
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -85,6 +94,33 @@ export default function BuyerProfile() {
           }, `-=${stepDuration}`);
         }
       });
+
+      // Animate the description text
+      if (textRef.current) {
+        const words = textRef.current.querySelectorAll('.word');
+        gsap.fromTo(words, 
+          { 
+            opacity: 0, 
+            x: 80, 
+            fontWeight: 900,
+            scale: 1.1,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            fontWeight: 400,
+            scale: 1,
+            duration: 1.8,
+            stagger: 0.04,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: textRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            }
+          }
+        );
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -131,10 +167,11 @@ export default function BuyerProfile() {
           </div>
           
           <p 
+            ref={textRef}
             className="text-lg md:text-xl font-normal leading-tight max-w-sm mb-12"
             style={{ color: '#fbfbfbb3' }}
           >
-            WOFX is the gateway to global trends, connecting industry leaders to the future of furniture and design.
+            {splitWords("WOFX is the gateway to global trends, connecting industry leaders to the future of furniture and design.")}
           </p>
 
           <div className="flex">

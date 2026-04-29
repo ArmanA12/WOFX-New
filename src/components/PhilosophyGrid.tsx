@@ -1,10 +1,56 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { CylinderText } from './CylinderText';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PhilosophyGrid: React.FC = () => {
   const borderColor = "border-[#DFDFDF]";
+  const box1Ref = useRef<HTMLDivElement>(null);
+  const box2Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    [box1Ref, box2Ref].forEach((ref) => {
+      if (ref.current) {
+        const words = ref.current.querySelectorAll('.word');
+        gsap.fromTo(words, 
+          { 
+            opacity: 0, 
+            x: 80, 
+            y: 10,
+            fontWeight: 900,
+            scale: 1.1,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            fontWeight: 400,
+            scale: 1,
+            duration: 1.5,
+            stagger: 0.03,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: ref.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            }
+          }
+        );
+      }
+    });
+  }, []);
+
+  const splitWords = (text: string) => {
+    return text.split(' ').map((word, i) => (
+      <span key={i} className="word inline-block mr-[0.25em] will-change-transform transform-gpu">
+        {word}
+      </span>
+    ));
+  };
   
   return (
     <section className="relative w-full bg-[#f0f0f0] overflow-hidden border-t-[1.5px] border-[#DFDFDF]">
@@ -87,11 +133,18 @@ const PhilosophyGrid: React.FC = () => {
           </div>
           
           {/* Box 2: Details */}
-          <div className={`border-r-[1.5px] border-b-[1.5px] ${borderColor} flex flex-col items-start justify-end p-8 md:p-12 bg-white text-black transition-colors duration-500 group`}>
-            <span className="text-sm font-medium uppercase tracking-[0.2em] mb-4 text-[#666]">01</span>
-            <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-4">Curated<br />Exhibits</h3>
-            <p className="text-sm text-[#333] mb-8 leading-relaxed">Discover handpicked collections from global leaders in furniture and interior innovation.</p>
-            <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:gap-4 transition-all duration-300 group/btn">
+          <div 
+            ref={box1Ref}
+            className={`border-r-[1.5px] border-b-[1.5px] ${borderColor} flex flex-col items-start justify-end p-8 md:p-12 bg-white text-black transition-colors duration-500 group`}
+          >
+            <span className="word text-sm font-medium uppercase tracking-[0.2em] mb-4 text-[#666]">01</span>
+            <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
+              {splitWords("Curated Exhibits")}
+            </h3>
+            <p className="text-sm text-[#333] mb-8 leading-relaxed">
+              {splitWords("Discover handpicked collections from global leaders in furniture and interior innovation.")}
+            </p>
+            <button className="word flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:gap-4 transition-all duration-300 group/btn">
               READ FULL ARTICLE <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
             </button>
           </div>
@@ -115,11 +168,18 @@ const PhilosophyGrid: React.FC = () => {
           </div>
           
           {/* Box 4: Details */}
-          <div className={`border-b-[1.5px] ${borderColor} flex flex-col items-start justify-end p-8 md:p-12 bg-white text-black transition-colors duration-500 group`}>
-            <span className="text-sm font-medium uppercase tracking-[0.2em] mb-4 text-[#666]">02</span>
-            <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-4">Global<br />Sourcing</h3>
-            <p className="text-sm text-[#333] mb-8 leading-relaxed">Connect with over 400+ international brands across various categories of the supply chain.</p>
-            <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:gap-4 transition-all duration-300 group/btn">
+          <div 
+            ref={box2Ref}
+            className={`border-b-[1.5px] ${borderColor} flex flex-col items-start justify-end p-8 md:p-12 bg-white text-black transition-colors duration-500 group`}
+          >
+            <span className="word text-sm font-medium uppercase tracking-[0.2em] mb-4 text-[#666]">02</span>
+            <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
+              {splitWords("Global Sourcing")}
+            </h3>
+            <p className="text-sm text-[#333] mb-8 leading-relaxed">
+              {splitWords("Connect with over 400+ international brands across various categories of the supply chain.")}
+            </p>
+            <button className="word flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:gap-4 transition-all duration-300 group/btn">
               READ FULL ARTICLE <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
             </button>
           </div>
